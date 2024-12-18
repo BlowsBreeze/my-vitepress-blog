@@ -3,23 +3,33 @@ layout: page
 sidebar: false
 
 hero:
-  title: "Document"
-  subTitle: "📚 欢迎来到本项目的使用说明书"
+  title: "Blogs"
+  subTitle: "🌷🌼Blog Garden🌼🌷"
 
 types:
-  - name: "使用指南"
-    desc: "How to Use"
-    link: "/Notes/0tutorial/quickstart"
+  - name: 面经分享
+    desc: |-
+      Interview experiences
+      25 届前端求职记录
+    link: /Notes/Interviews/
     icon: "✨"
-  - name: "面经分享"
-    desc: "interview experiences"
-    link: "/Notes/Interviews/"
+  - name: 学习笔记
+    desc: |-
+      Learning Notes
+      我那磕磕绊绊的开发之路
+    link: /Notes/Learning/
     icon: "🏃"
+  - name: 随想杂文
+    desc: |-
+      Personal musings
+      总要有个写东西的地方
+    link: /Notes/Thoughts/
+updateTime: '2024-12-18 20:18'
 # flow: true
 ---
 
 <script setup>
-import BlogArchive from '../../.vitepress/views/BlogArchive.vue'
+import BlogArchive from '../../.vitepress/views/Archive/index.vue'
 </script>
 
 <BlogArchive/>

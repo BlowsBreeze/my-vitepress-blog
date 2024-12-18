@@ -4,6 +4,7 @@
         <template #title>🎯 Projects ✨</template>
         <template #lead>My Open Source Projects</template>
       </VPTeamPageTitle>
+      <div class="flex justify-center pb-8">待更新...🚧</div>
       <div class="px-6 md:px-12 lg:px-16">
         <div class="ProjectsContent">
           <ProjectCard v-for="(item, index) in projectsInfo" :key="index" v-bind="item" />

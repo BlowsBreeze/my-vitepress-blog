@@ -12,7 +12,7 @@
           <p class="mt-2 sm:text-lg text-base"> HDU / Front-End Developer</p>
           <p class="mt-1 text-black/50">“🚀A software engineer.”</p>
           <div class="mt-4 flex gap-4">
-            <div @click="router.go('./Notes/')"
+            <div @click="router.go('./AboutMe')"
               class="button relative w-fit cursor-pointer rounded-full bg-white active:scale-95">
               🎉 Welcome
             </div>
