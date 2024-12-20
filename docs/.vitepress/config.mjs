@@ -33,7 +33,7 @@ export default defineConfig({
     // 首页底部版权声明
     footer: {
       copyright: "Copyright © 2024-present BlowsBreeze",
-      ICP:"浙ICP备2024141084号-1"
+      ICP: "浙ICP备2024141084号-1"
     },
     // 【文章页面左侧导航】
     sidebar: {
