@@ -1,3 +1,10 @@
+---
+title: "JS手写"
+desc: "常见的JS手写题"
+tags: "JavaScript"
+updateTime: "2024-12-20 15:40"
+outline: deep
+---
 # 数组扁平化
 
 ES6 flat实现
