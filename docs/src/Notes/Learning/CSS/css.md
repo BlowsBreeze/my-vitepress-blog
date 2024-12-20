@@ -45,11 +45,9 @@ Flexible Box模型，通常称为flexbox，是一维的布局模型
 
 row就是水平方向，inline(内联)方向
 
-![If flex-direction is set to row the main axis runs along the row in the inline direction.](D:\linshi\uniapp_pic\basics1.png)
 
 column是垂直方向，block(块)方向
 
-![If flex-direction is set to column the main axis runs in the block direction.](D:\linshi\uniapp_pic\basics2.png)
 
 ##### 交叉轴
 
