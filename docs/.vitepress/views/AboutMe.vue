@@ -1,4 +1,5 @@
 <template>
+  <SpeedInsights />
   <div class="px-6 pb-24 mt-2 md:pb-32 md:px-12 lg:px-16">
     <div class="flex flex-col items-center justify-center max-w-6xl mx-auto">
       <!-- 头像与徽章 -->
@@ -206,7 +207,9 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { SpeedInsights } from '@vercel/speed-insights/vue';
+</script>
 
 <style scoped>
 .honer-bg {
