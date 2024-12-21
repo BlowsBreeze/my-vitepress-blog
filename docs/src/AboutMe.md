@@ -8,5 +8,5 @@ import AboutMe from '../.vitepress/views/AboutMe.vue'
 
 
 </script>
-
+<SpeedInsightsWrapper />
 <AboutMe/>
