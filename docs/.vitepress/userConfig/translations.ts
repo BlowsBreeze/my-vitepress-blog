@@ -10,5 +10,4 @@ export const fileName2Title: Record<string, string> = {
   Learning: "学习笔记📝",
   Thoughts: "随想录📖",
   ComputerNetwork: "计算机网络",
-  TCPUDPdifferent: "TCP/UDP区别"
 };
