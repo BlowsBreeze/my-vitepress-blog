@@ -15,12 +15,14 @@ export default {
   enhanceApp(ctx) {
     ctx.app.component("LinkCard", LinkCard);
     ctx.app.component("HText", HText);
-
-    // 仅在客户端环境下注入 Vercel 相关功能
+    
+    // 在客户端环境下初始化 Vercel Analytics
     if (typeof window !== 'undefined') {
-      import('@vercel/analytics').then(va => va.inject());
-      import('@vercel/speed-insights/vue').then(({ SpeedInsights }) => {
-        ctx.app.component('SpeedInsights', SpeedInsights);
+      // 使用动态导入避免服务端渲染问题
+      import('@vercel/analytics').then(va => {
+        va.inject();
+      }).catch(() => {
+        // 静默处理错误
       });
     }
   },
