@@ -1,5 +1,7 @@
 import DefaultTheme from "vitepress/theme";
 import { Theme, useRoute } from "vitepress";
+import { inject } from "@vercel/analytics";
+import { SpeedInsights } from "@vercel/speed-insights/vue";
 import "./tailwind.css";
 import "./var.css";
 import "./article.css";
@@ -15,9 +17,13 @@ export default {
   enhanceApp(ctx) {
     ctx.app.component("LinkCard", LinkCard);
     ctx.app.component("HText", HText);
+    ctx.app.component("SpeedInsights", SpeedInsights);
   },
 
   setup() {
+    // 注入 Vercel Analytics
+    inject();
+
     const route = useRoute();
     const initZoom = () => {
       mediumZoom(".main img", { background: "var(--vp-c-bg)", margin: 24 });
