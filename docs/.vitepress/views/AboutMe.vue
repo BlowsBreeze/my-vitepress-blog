@@ -158,7 +158,8 @@
           <p class="text-[12px]">实习经历</p>
           <h1 class="mt-2 text-4xl font-bold">追风赶月</h1>
           <div class="mt-4 md:text-base lg:text-xl">
-            <p class="py-1">🏍️ 2023.9 论文中...</p>
+            <p class="py-1">🚗 2025.6 上海 / 携程 / 前端开发工程师</p>
+            <p class="py-1">🏍️ 2024.9 论文中...</p>
             <p class="py-1">🚲 2024.4 杭州 / 宇视科技 / 软件开发工程师（web）</p>
           </div>
         </div>
