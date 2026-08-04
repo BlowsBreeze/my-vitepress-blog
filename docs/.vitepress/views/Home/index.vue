@@ -2,7 +2,12 @@
     <div class="home flex h-screen w-screen items-center justify-center">
       <EmojiBackground />
       <div class=" -mt-10 sm:-mt-40 flex w-screen animate-scale-in-center flex-col px-4 sm:w-[626px]">
-        <Vue3Lottie :animationData="lottieData" class=" w-full sm:w-[626px]" />
+        <component
+          :is="Vue3Lottie"
+          v-if="Vue3Lottie"
+          :animationData="lottieData"
+          class="w-full sm:w-[626px]"
+        />
         <div
           class="mt-6 flex w-full flex-col items-center rounded-lg bg-white/85  py-6 text-zinc-800 shadow shadow-black/40 backdrop-blur-sm relative">
           <div class="text-2xl font-bold sm:text-3xl">
@@ -28,14 +33,14 @@
   </template>
   
   <script setup lang="ts">
-  import { onMounted, ref, onBeforeUnmount } from 'vue'
+  import { onMounted, ref, onBeforeUnmount, shallowRef } from 'vue'
   import EmojiBackground from '../../components/EmojiBackground/index.vue'
 //   import { RiGithubLine } from '@remixicon/vue'
   import { useRouter } from 'vitepress'
-  import { Vue3Lottie } from 'vue3-lottie'
   import lottieData from '../../assets/dora.json'
-  
+
   const returnToTopRef = ref<HTMLElement | null>(null)
+  const Vue3Lottie = shallowRef<null | typeof import('vue3-lottie')['Vue3Lottie']>(null)
   
   const router = useRouter()
 //   const gotoGithub = () => {
@@ -43,6 +48,10 @@
 //   }
   
   onMounted(() => {
+    import('vue3-lottie').then((mod) => {
+      Vue3Lottie.value = mod.Vue3Lottie
+    })
+
     returnToTopRef.value = document.querySelector('.VPLocalNav.empty.fixed')
     if (returnToTopRef.value) returnToTopRef.value.style.zIndex = '-1000'
   })

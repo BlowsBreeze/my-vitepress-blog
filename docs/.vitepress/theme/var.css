@@ -41,7 +41,6 @@
 
 /* 主页标题设置, 采用自定义的图片 */
 .main .name {
-  background-image: url("/title.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
