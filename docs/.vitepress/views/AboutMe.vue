@@ -81,6 +81,9 @@
               <div class="flex justify-center flex-shrink-0 w-20 h-20 p-4 rounded-lg bg-emerald-200">
                 <img src="./img/vue.svg" alt="vue.js" />
               </div>
+              <div class="h-20 w-20 flex-shrink-0 rounded-lg bg-sky-100 p-4">
+                <img src="./img/react.png" alt="react.js" />
+              </div>
               <div class="flex-shrink-0 w-20 h-20 p-4 bg-red-200 rounded-lg">
                 <img src="./img/html.svg" alt />
               </div>
@@ -113,6 +116,9 @@
               </div>
               <div class="flex justify-center flex-shrink-0 w-20 h-20 p-4 rounded-lg bg-emerald-200">
                 <img src="./img/vue.svg" alt="vue.js" />
+              </div>
+              <div class="h-20 w-20 flex-shrink-0 rounded-lg bg-sky-100 p-4">
+                <img src="./img/react.png" alt="react.js" />
               </div>
               <div class="flex-shrink-0 w-20 h-20 p-4 bg-red-200 rounded-lg">
                 <img src="./img/html.svg" alt />
@@ -172,8 +178,10 @@
           <p class="text-2xl">📭 How to Reach me</p>
           <ul class="mt-2 md:text-base lg:text-xl">
             <li>Email: <a href="mailto:68191378@qq.com" class="underline text-blue-500">68191378@qq.com</a></li>
-            <li>博客园（20篇+）：<a href="https://www.cnblogs.com/goicandoit" class="underline text-blue-500">goicandoit</a></li>
-            <li>稀土掘金：<a href="https://juejin.cn/user/2766843687216285/posts" class="underline text-blue-500">icandoit</a></li>
+            <li>博客园（20篇+）：<a href="https://www.cnblogs.com/goicandoit" class="underline text-blue-500">goicandoit</a>
+            </li>
+            <li>稀土掘金：<a href="https://juejin.cn/user/2766843687216285/posts"
+                class="underline text-blue-500">icandoit</a></li>
             <li>QQ: 68191378</li>
           </ul>
         </div>
