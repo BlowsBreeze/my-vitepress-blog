@@ -1,10 +1,12 @@
 {
   "include": [
-    "./docs/.vitepress/utils/*.ts",
-    "./docs/.vitepress/userConfig/*.ts",
-    "./docs/.vitepress/components/*.vue",
-    "./docs/.vitepress/views/*.vue"
+    "./docs/**/*.ts",
+    "./docs/**/*.vue",
+    "./docs/**/*.md"
   ],
+  "vueCompilerOptions": {
+    "vitePressExtensions": [".md"]
+  },
   "compilerOptions": {
     "module": "NodeNext",
     "allowJs": true,

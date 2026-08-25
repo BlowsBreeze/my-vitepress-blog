@@ -155,7 +155,7 @@
         <!-- 实习 -->
         <div
           class="bg-stripe w-full md:w-[50%] bg-slate-50 border dark:bg-slate-800 dark:border-slate-900 p-4 rounded-xl">
-          <p class="text-[12px]">实习经历</p>
+          <p class="text-[12px]">工作经历</p>
           <h1 class="mt-2 text-4xl font-bold">追风赶月</h1>
           <div class="mt-4 md:text-base lg:text-xl">
             <p class="py-1">🚗 2025.6 上海 / 携程 / 前端开发工程师</p>
