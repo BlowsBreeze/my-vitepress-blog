@@ -7,7 +7,10 @@ export default defineConfig({
   title: "blowsBreeze's Blog",
   titleTemplate: "Blog",
   // 在标签上显示所的 logo
-  head: [["link", { rel: "icon", href: "/logo.svg" }]],
+  head: [
+    ["link", { rel: "icon", href: "/logo.svg" }],
+    ["meta", { name: "baidu-site-verification", content: "codeva-a2RiyrIvjB" }],
+  ],
 
   // 网站描述，有利于被搜索引擎捕获
   description:
