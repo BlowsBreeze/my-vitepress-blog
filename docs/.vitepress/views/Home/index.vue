@@ -4,20 +4,20 @@
       <div class=" -mt-10 sm:-mt-40 flex w-screen animate-scale-in-center flex-col px-4 sm:w-[626px]">
         <div class="hero-visual">
           <img
+            v-if="!lottieReady"
             src="/dora-poster.png"
             width="626"
             height="277"
             fetchpriority="high"
             alt=""
             class="hero-poster"
-            :class="{ 'hero-poster--hidden': lottieVisible }"
           />
           <component
             :is="Vue3Lottie"
             v-if="Vue3Lottie"
             :animationData="lottieData"
             class="hero-lottie"
-            :class="{ 'hero-lottie--visible': lottieVisible }"
+            @onAnimationLoaded="onLottieLoaded"
           />
         </div>
         <div
@@ -45,7 +45,7 @@
   </template>
   
   <script setup lang="ts">
-  import { nextTick, onMounted, ref, onBeforeUnmount, shallowRef } from 'vue'
+  import { onMounted, ref, onBeforeUnmount, shallowRef } from 'vue'
   import EmojiBackground from '../../components/EmojiBackground/index.vue'
 //   import { RiGithubLine } from '@remixicon/vue'
   import { useRouter } from 'vitepress'
@@ -53,7 +53,11 @@
 
   const returnToTopRef = ref<HTMLElement | null>(null)
   const Vue3Lottie = shallowRef<null | typeof import('vue3-lottie')['Vue3Lottie']>(null)
-  const lottieVisible = ref(false)
+  const lottieReady = ref(false)
+
+  const onLottieLoaded = () => {
+    lottieReady.value = true
+  }
   
   const router = useRouter()
 //   const gotoGithub = () => {
@@ -64,14 +68,6 @@
     const loadLottie = async () => {
       const mod = await import('vue3-lottie')
       Vue3Lottie.value = mod.Vue3Lottie
-
-      // Keep the HTML-discoverable poster visible until Lottie has mounted.
-      await nextTick()
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          lottieVisible.value = true
-        })
-      })
     }
 
     // Do not compete with the poster image's initial paint and LCP.
@@ -115,20 +111,6 @@
   .hero-poster {
     z-index: 1;
     object-fit: cover;
-    transition: opacity 120ms ease-out;
-  }
-
-  .hero-poster--hidden {
-    opacity: 0;
-  }
-
-  .hero-lottie {
-    opacity: 0;
-    transition: opacity 120ms ease-in;
-  }
-
-  .hero-lottie--visible {
-    opacity: 1;
   }
   
   .button-github {
