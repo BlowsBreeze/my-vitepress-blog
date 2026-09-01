@@ -2,12 +2,24 @@
     <div class="home flex h-screen w-screen items-center justify-center">
       <EmojiBackground />
       <div class=" -mt-10 sm:-mt-40 flex w-screen animate-scale-in-center flex-col px-4 sm:w-[626px]">
-        <component
-          :is="Vue3Lottie"
-          v-if="Vue3Lottie"
-          :animationData="lottieData"
-          class="w-full sm:w-[626px]"
-        />
+        <div class="hero-visual">
+          <img
+            src="/dora-poster.png"
+            width="626"
+            height="277"
+            fetchpriority="high"
+            alt=""
+            class="hero-poster"
+            :class="{ 'hero-poster--hidden': lottieVisible }"
+          />
+          <component
+            :is="Vue3Lottie"
+            v-if="Vue3Lottie"
+            :animationData="lottieData"
+            class="hero-lottie"
+            :class="{ 'hero-lottie--visible': lottieVisible }"
+          />
+        </div>
         <div
           class="mt-6 flex w-full flex-col items-center rounded-lg bg-white/85  py-6 text-zinc-800 shadow shadow-black/40 backdrop-blur-sm relative">
           <div class="text-2xl font-bold sm:text-3xl">
@@ -33,7 +45,7 @@
   </template>
   
   <script setup lang="ts">
-  import { onMounted, ref, onBeforeUnmount, shallowRef } from 'vue'
+  import { nextTick, onMounted, ref, onBeforeUnmount, shallowRef } from 'vue'
   import EmojiBackground from '../../components/EmojiBackground/index.vue'
 //   import { RiGithubLine } from '@remixicon/vue'
   import { useRouter } from 'vitepress'
@@ -41,6 +53,7 @@
 
   const returnToTopRef = ref<HTMLElement | null>(null)
   const Vue3Lottie = shallowRef<null | typeof import('vue3-lottie')['Vue3Lottie']>(null)
+  const lottieVisible = ref(false)
   
   const router = useRouter()
 //   const gotoGithub = () => {
@@ -48,9 +61,28 @@
 //   }
   
   onMounted(() => {
-    import('vue3-lottie').then((mod) => {
+    const loadLottie = async () => {
+      const mod = await import('vue3-lottie')
       Vue3Lottie.value = mod.Vue3Lottie
-    })
+
+      // Keep the HTML-discoverable poster visible until Lottie has mounted.
+      await nextTick()
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          lottieVisible.value = true
+        })
+      })
+    }
+
+    // Do not compete with the poster image's initial paint and LCP.
+    const idleWindow = window as Window & {
+      requestIdleCallback?: (callback: IdleRequestCallback, options?: IdleRequestOptions) => number
+    }
+    if (idleWindow.requestIdleCallback) {
+      idleWindow.requestIdleCallback(loadLottie, { timeout: 1500 })
+    } else {
+      window.setTimeout(loadLottie, 300)
+    }
 
     returnToTopRef.value = document.querySelector('.VPLocalNav.empty.fixed')
     if (returnToTopRef.value) returnToTopRef.value.style.zIndex = '-1000'
@@ -64,6 +96,39 @@
   <style scoped>
   .home {
     --primary-color: #ff6086;
+  }
+
+  .hero-visual {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 626 / 277;
+  }
+
+  .hero-poster,
+  .hero-lottie {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-poster {
+    z-index: 1;
+    object-fit: cover;
+    transition: opacity 120ms ease-out;
+  }
+
+  .hero-poster--hidden {
+    opacity: 0;
+  }
+
+  .hero-lottie {
+    opacity: 0;
+    transition: opacity 120ms ease-in;
+  }
+
+  .hero-lottie--visible {
+    opacity: 1;
   }
   
   .button-github {
