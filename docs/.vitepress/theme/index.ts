@@ -24,6 +24,12 @@ export default {
       }).catch(() => {
         // 静默处理错误
       });
+
+      import('@vercel/speed-insights').then(({ injectSpeedInsights }) => {
+        injectSpeedInsights();
+      }).catch(() => {
+        // 静默处理错误
+      });
     }
   },
 
